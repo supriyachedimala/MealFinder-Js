@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Meals API Example</title>
+  <link rel="stylesheet" href="style.css">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+  
+  <style>
+   
+.intro {
+  width:100%;          
+  margin: 10px auto;          
+  padding: 30px;
+  background: #fdfdfd;        
+  border-radius: 12px;        
+  
+}
+
+
+.intro h2 {
+  font-size: 36px;
+  font-weight: bold;
+              
+  text-align: left;
+  margin-bottom: 1px;
+  position: relative;
+}
+
+
+
+.desc {
+  font-size: 30px;      
+  line-height: 1.8;     
+  color: #333;          
+  text-align: justify;
+  box-shadow: 0 4px 12px rgba(255, 243, 224, 0.8); 
+  padding: 20px;  
+  border: 1px solid orange;      
+  border-radius: 8px;  
+  background:whitesmoke;     
+}
+.mea {
+  display: inline-block;      /* so underline fits text */
+  position: relative;
+}
+
+.mea::after {
+  content: "";
+  position: absolute;
+  right: 10%;                  
+  bottom: -6px;               
+  width: 80%;                 
+  height: 4px;                
+  background-color: orange;   
+}
+
+    
+    
+
+   
+
+    .meal-container {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr); 
+  gap: 15px;
+  margin-top: 20px;
+}
+
+    .meal {
+      background: white;
+      padding: 10px;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      text-align: left;
+    }
+    .meal img {
+      width: 400px;
+      height: 400px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+    .meal h3 {
+      margin: 10px 0 5px;
+      font-size: 16px;
+    }
+  </style>
+</head>
+<body>
+
+    <div class="topbar">
+<div class="container">
+<div class="logo">
+<i class="fa-solid fa-house"></i>
+    <a href="./index.html" target="_blank">MEALFINDER</a>
+</div>
+<div class="menu-icon">
+    <i class="fa-solid fa-bars"></i>
+    <!-- Menu List -->
+<nav class="menu-list" id="menuList">
+  <ul>
+    <li><a href="./beef.html">Beef</a></li>
+    <li><a href="./chicken.html">Chicken</a></li>
+    <li><a href="./dessert.html">Dessert</a></li>
+    <li><a href="./Lamb.html">Lamb</a></li>
+    <li><a href="./Pasta.html">Pasta</a></li>
+    <li><a href="./Seafood.html">Seafood</a></li>
+    <li><a href="./Vegan.html">Vegan</a></li>
+    <li><a href="./vegetarian.html">Vegetarian</a></li>
+    <li><a href="./Breakfast.html">Breakfast</a></li>
+    <li><a href="./Goat.html">Goat</a></li>
+  </ul>
+</nav>
+</div>
+</div>
+</div>
+  <header class="header">
+    <div class="search-bar">
+        <input type="text" placeholder="Search recipes here.." />
+        <button><i class="fa-solid fa-magnifying-glass"></i></button>
+      </div>
+    </div>
+    <div class="hero-text">
+      <h1>What are your favorite cuisines?</h1>
+      <p>PERSONALIZE YOUR EXPERIENCE</p>
+    </div>
+  </header>
+<section class="intro">
+    <h2>Seafood</h2>
+    <p class="desc"> 
+     Seafood encompasses all edible aquatic animals, primarily fish and shellfish like crustaceans and mollusks, offering vital protein and healthy fats. A popular food worldwide, seafood provides essential vitamins and minerals, with consistent consumption linked to reduced risks of heart disease and improved brain function. 
+    </p>
+  </section>
+
+
+
+  <h1 class="mea"> Meals</h1>
+  <div class="meal-container" id="mealContainer"></div>
+
+  <script>
+    const menuIcon = document.querySelector(".menu-icon");
+  const menuList = document.getElementById("menuList");
+
+  menuIcon.addEventListener("click", () => {
+    if (menuList.style.display === "block") {
+      menuList.style.display = "none";
+    } else {
+      menuList.style.display = "block";
+    }
+  });
+
+    // Fetch meals by category "Seafood"
+    fetch("https://www.themealdb.com/api/json/v1/1/filter.php?c=Seafood")
+      .then(response => response.json())
+      .then(data => {
+        const meals = data.meals;
+        const container = document.getElementById("mealContainer");
+
+        meals.forEach(meal => {
+          const mealDiv = document.createElement("div");
+          mealDiv.classList.add("meal");
+
+          mealDiv.innerHTML = `
+            <img src="${meal.strMealThumb}" alt="${meal.strMeal}">
+            <h3>${meal.strMeal}</h3>
+          `;
+
+          container.appendChild(mealDiv);
+        });
+      })
+      .catch(error => console.error("Error fetching data:", error));
+  </script>
+
+</body>
+</html>

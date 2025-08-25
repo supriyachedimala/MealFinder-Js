@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Meal Finder</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    
+     .menu-list ul {
+      display: flex;
+      gap: 15px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      background-color: white;
+    }
+    
+    .breadcrumb {
+  background-color: #f15b2a;
+  color: white;
+  padding: 10px 20px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+ .section-title {
+  font-size: 24px;
+  text-align: left;
+}
+
+.underline {
+  border-bottom: 3px solid orange;
+  padding-bottom: 2px;
+}
+
+    #recipe-details {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    #meal-image {
+      max-width: 500px;
+      height: auto;
+      border-radius: 8px;
+      flex: 1;
+    }
+
+    
+     .image-measures {
+      margin-top: 15px;
+      padding: 10px;
+      background: #f1f1f1;
+      border-radius: 6px;
+    }
+
+    .meal-info {
+      flex: 2;
+    }
+
+    .meal-info h3 {
+      margin-top: 0;
+    }
+
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    li {
+      margin-bottom: 5px;
+    }
+
+    .meal-meta p {
+      margin: 5px 0;
+      font-size: 14px;
+    }
+
+    .meal-meta a {
+      color: #007bff;
+      text-decoration: none;
+    }.ingredients {
+  margin-top: 20px;
+  background-color: #f15b2a;
+  color:white;
+  width: 800px;
+  
+  gap: 50px;
+  padding-bottom: 50px;
+}
+
+.ingredients h4 {
+  margin-bottom: 10px;
+}
+
+.ingredients ul {
+  list-style: none;
+  padding: 0;
+}
+
+.ingredients li {
+  margin-bottom: 8px;
+  font-size: 14px;
+}
+
+.ingredients button {
+  margin-right: 10px;
+  background-color:darkgreen;
+  color: white;
+  border: none;
+  padding: 4px 8px;
+  border-radius: 50px;
+  font-weight: bold;
+}
+
+
+.ingredients ul {
+  list-style: none;
+  padding-left: 0;
+  columns: 3;
+  margin-top: 10px;
+  
+}
+
+
+  
+    .measures h4{
+  font-size: 20px;
+  margin-top: 30px;
+}
+.measures ul {
+  list-style: none;
+  padding-left: 0;
+  columns: 2;
+  margin-top: 10px;
+  background-color:whitesmoke; 
+  padding: 20px;
+  border: 1px solid snow;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08); 
+
+}
+
+.measures i{
+  color:orangered;
+}
+
+.instructions {
+  margin-top: 30px;
+  font-family: Arial, sans-serif;
+}
+
+.instructions h4 {
+  font-size: 20px;
+  margin-bottom: 15px;
+  font-weight: bold;
+}
+
+.instructions ol {
+  list-style: none;
+  padding: 0;
+}
+
+.instructions li {
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  font-size: 20px;
+}
+.instructions i{
+  color: #f15b2a;
+  
+}
+
+    
+  </style> 
+</head>
+
+<body>
+
+
+  <div class="topbar">
+<div class="container">
+<div class="logo">
+<i class="fa-solid fa-house"></i>
+    <a href="index.html" target="_blank">MEALFINDER</a>
+</div>
+<div class="menu-icon">
+    <i class="fa-solid fa-bars"></i>
+  
+<nav class="menu-list" id="menuList">
+  <ul>
+    <li><a href="#">Beef</a></li>
+    <li><a href="#">Chicken</a></li>
+    <li><a href="#">Dessert</a></li>
+    <li><a href="#">Lamb</a></li>
+    <li><a href="#">Pasta</a></li>
+    <li><a href="#">Seafood</a></li>
+    <li><a href="#">Vegan</a></li>
+    <li><a href="#">Vegetarian</a></li>
+    <li><a href="#">Breakfast</a></li>
+    <li><a href="#">Goat</a></li>
+  </ul>
+</nav>
+</div>
+
+</div>
+</div>
+
+  <header class="header">
+    <div class="search-bar">
+      <input type="text" placeholder="Search recipes here.." />
+      <button><i class="fa-solid fa-magnifying-glass"></i></button>
+    </div>
+    <div class="hero-text">
+      <h1>What are your favorite cuisines?</h1>
+      <p>PERSONALIZE YOUR EXPERIENCE</p>
+    </div>
+  </header>
+
+  
+  <main>
+    <div class="breadcrumb">
+    <span><i class="fa-solid fa-house"></i></span>
+    <span> <i class="fa-solid fa-angles-right"></i> </span>
+     <strong>CABBAGE SOUP(SHCHI)</strong>
+  </div>
+
+    <h2 class="section-title"><span class="underline">MEAL</span> DETAILS</h2>
+    
+     <section id="recipe-details">
+
+      
+       <div>
+        <img id="meal-image" src="" alt="Image of the meal">
+        
+      </div>
+
+      
+      <div class="meal-info">
+        <h2 id="meal-name"></h2>
+        <div class="meal-meta">
+          <p><b>Category:</b> <span id="meal-category"></span></p>
+          <p><b>Tags:</b> <span id="meal-tags"></span></p>
+          <p><b>Source:</b> <a id="meal-source" href="#" target="_blank">View Source</a></p>
+        </div>
+
+        
+        
+         <div class="ingredients">
+          <h4>Ingredients</h4>
+          <ul>
+            <li><button>1</button>Aubergine</li>
+          <li><button>2</button> Onion</li>
+          <li><button>3</button>Tomatoes</li>
+          <li><button>4</button> Garlic</li>
+          <li><button>5</button> Green Chilli</li>
+          <li><button>6</button> Red Chilli Powder</li>
+          <li><button>7</button> Oil</li>
+          <li><button>8</button> Coriander Leaves</li>
+          <li><button>9</button>Salt</li>
+          </ul>
+        </div>
+      </div>
+    </section> 
+
+     <div class="measures">
+      <h4>Measure</h4>
+      <ul>
+        <li><i class="fa-solid fa-spoon"></i>1 large</li>
+        <li><i class="fa-solid fa-spoon"></i>1 cup</li>
+        <li><i class="fa-solid fa-spoon"></i>3 tablespoons</li>
+        <li><i class="fa-solid fa-spoon"></i>1 tablespoon chopped</li>
+        <li><i class="fa-solid fa-spoon"></i>1 cup</li>
+        <li><i class="fa-solid fa-spoon"></i>4 cloves</li>
+        <li><i class="fa-solid fa-spoon"></i>½ tablespoon</li>
+        <li><i class="fa-solid fa-spoon"></i>½ teaspoon</li>
+        <li><i class="fa-solid fa-spoon"></i>As required</li>
+      </ul>
+    </div>
+    
+
+
+
+   
+
+    <div class="instructions">
+      <h4>Instructions:</h4>
+      <ol>
+        <li><i class="fa-regular fa-square-check"></i>Rinse the baingan in water.pat dry with a kitchen napkin apply some oil all over and.</li>
+        <li><i class="fa-regular fa-square-check"></i>keep it for roasting on an open flame.you can also grill the baingan or roast in the oven</li>
+        <li><i class="fa-regular fa-square-check"></i>the smoky flavor of the baingan.keep the eggplant turning after a 2 to 3 minutes on the flame.</li>
+        <li><i class="fa-regular fa-square-check"></i>cooked you could also embed some garlic cloves in the baingan and then roast it</li>
+        <li><i class="fa-regular fa-square-check"></i>easily in aubergines without any resistance remove the baingan and immerse in abowl of water till it cool.</li>
+        <li><i class="fa-regular fa-square-check"></i>down.</li>
+        <li><i class="fa-regular fa-square-check"></i>3.you can also do the dhungar technique of infusing charcoal smoky flavor in the baingan this is an optional step.</li>
+        <li><i class="fa-regular fa-square-check"></i>use natural charcoal for this method heat a small piece of charcoal on flame till it becomes smoking hot and red.</li>
+        <li><i class="fa-regular fa-square-check"></i>4. make small cuts on the baingan with a knife place the red hot charcoal in the same plate where roasted.</li>
+        <li><i class="fa-regular fa-square-check"></i>aubergaie is kept add a few drops of oil on the charcoal.the charcoal in the samplewhere it roasted.</li>
+        <li><i class="fa-regular fa-square-check"></i>5 as soon as smoke begins to release from charcoal .cover the entire plate tightly with a large bowl.allowthe</li>
+        <li><i class="fa-regular fa-square-check"></i>charcoal smoke to get infused for 1 to 2 mintues .the more you do.the  more smokly the bainganbharta will</li>
+        
+        
+
+      </ol>
+    </div>
+
+    </div>
+  </main>
+
+      <script>
+  const mealName = "Cabbage Soup";
+  const apiUrl = `https://www.themealdb.com/api/json/v1/1/search.php?s=${mealName}`;
+
+  fetch(apiUrl)
+    .then(response => response.json())
+    .then(data => {
+      const meal = data.meals[0];
+
+      if (meal) {
+        document.getElementById('meal-name').textContent = meal.strMeal;
+        document.getElementById('meal-image').src = meal.strMealThumb;
+
+        // ✅ Instructions text
+        const instructionsContainer = document.querySelector('.instructions ol');
+        instructionsContainer.innerHTML = ""; 
+        meal.strInstructions.split(".").forEach(step => {
+          if (step.trim()) {
+            const li = document.createElement("li");
+            li.innerHTML = `<i class="fa-regular fa-square-check"></i> ${step.trim()}`;
+            instructionsContainer.appendChild(li);
+          }
+        });
+
+        // ✅ Meta info
+        document.getElementById('meal-category').textContent = meal.strCategory || "N/A";
+        document.getElementById('meal-tags').textContent = meal.strTags || "No tags";
+        const sourceLink = document.getElementById('meal-source');
+        if (meal.strSource) {
+          sourceLink.href = meal.strSource;
+          sourceLink.textContent = "View Source";
+        } else {
+          sourceLink.textContent = "No source available";
+          sourceLink.removeAttribute("href");
+        }
+
+        // ✅ Ingredients
+        const ingredientListRight = document.getElementById('ingredient-list-right');
+        ingredientListRight.innerHTML = ""; 
+        for (let i = 1; i <= 20; i++) {
+          const ingredient = meal[`strIngredient${i}`];
+          const measure = meal[`strMeasure${i}`];
+
+          if (ingredient && ingredient.trim() !== "") {
+            const liIngredient = document.createElement('li');
+            liIngredient.textContent = `${ingredient} - ${measure}`;
+            ingredientListRight.appendChild(liIngredient);
+          }
+        }
+      }
+    })
+    .catch(error => console.error('Fetch error:', error));
+</script>
+</body>
+
+</html>
+
+
