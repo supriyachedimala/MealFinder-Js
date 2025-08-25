@@ -1,13 +1,13 @@
 const API_CATEGORIES = "https://www.themealdb.com/api/json/v1/1/categories.php";
 const API_FILTER = "https://www.themealdb.com/api/json/v1/1/filter.php?c=";
 
-// Make sure these elements exist in your HTML
+
 const categoriesDiv = document.getElementById("categories"); 
 const mealsDiv = document.getElementById("meals");
 const menuIcon = document.querySelector(".menu-icon");
 const menuList = document.getElementById("menuList");
 
-// Toggle menu
+
 if (menuIcon && menuList) {
   menuIcon.addEventListener("click", () => {
     menuList.style.display = menuList.style.display === "block" ? "none" : "block";
@@ -21,7 +21,7 @@ if (closeMenu) {
   });
 }
 
-// Mapping categories to pages
+
 const categoryPages = {
   beef: "beef.html",
   chicken: "chicken.html",
@@ -41,14 +41,14 @@ const categoryPages = {
 fetch(API_CATEGORIES)
   .then(res => res.json())
   .then(data => {
-    if (!categoriesDiv) return; // safety check
+    if (!categoriesDiv) return; 
     categoriesDiv.innerHTML = "";
 
     data.categories.forEach(cat => {
       const div = document.createElement("div");
       div.classList.add("card");
 
-      // Category image + tag
+      
       div.innerHTML = `
         <img src="${cat.strCategoryThumb}" alt="${cat.strCategory}" width="200">
         <div class="tag">${cat.strCategory}</div>
@@ -69,12 +69,12 @@ fetch(API_CATEGORIES)
   })
   .catch(err => console.error("Error fetching categories:", err));
 
-// Fetch meals by category
+// Fetch meals 
 function fetchMealsByCategory(category) {
   fetch(API_FILTER + category)
     .then(res => res.json())
     .then(data => {
-      if (!mealsDiv) return; // safety check
+      if (!mealsDiv) return; 
       mealsDiv.innerHTML = "";
       data.meals.forEach(meal => {
         const div = document.createElement("div");
